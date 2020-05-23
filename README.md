@@ -106,4 +106,4 @@ send( IP(dst='10.0.2.7')/UDP()/"This is my UDP packet" )
 
 ---
 
-Thank you for your interest, this was a fun project to work on!
+Thank you for your interest, this project was a fun to work on!
