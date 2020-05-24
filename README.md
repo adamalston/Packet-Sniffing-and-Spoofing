@@ -1,7 +1,5 @@
 # Packet Sniffing and Spoofing
 
-![License](https://img.shields.io/github/license/adamalston/Packet-Sniffing-and-Spoofing?color=9cf&style=flat-square) [![HitCount](http://hits.dwyl.com/adamalston/Packet-Sniffing-and-Spoofing.svg)](http://hits.dwyl.com/adamalston/Packet-Sniffing-and-Spoofing)
-
 Packet sniffing and spoofing are two important concepts in network security. They also represent threats to network communication. Being able to understand these two threats is essential for understanding security measures in networking. There are many packet sniffing and spoofing tools, such as Wireshark, tcpdump, netwox, etc. Some of these tools are widely used by security experts, as well as by attackers. Being able to use these tools is important, but what is more important in network security is to understand how these tools work, i.e., how packet sniffing and spoofing are implemented in software.
 
 ## Sniffing Packets
@@ -106,4 +104,6 @@ send( IP(dst='10.0.2.7')/UDP()/"This is my UDP packet" )
 
 ---
 
-Thank you for your interest, this project was a fun to work on!
+Thank you for your interest, this project was fun to work on!
+
+![License](https://img.shields.io/github/license/adamalston/Packet-Sniffing-and-Spoofing)
