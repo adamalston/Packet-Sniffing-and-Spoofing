@@ -14,12 +14,12 @@ from scapy.all import *
 print("SNIFFING PACKETS")
 
 def print_pkt(pkt):
-   print("Source IP:", pkt[IP].src)
-   print("Destination IP:", pkt[IP].dst)
-   print("Protocol:", pkt[IP].proto)
-   print("\n")
+    print("Source IP:", pkt[IP].src)
+    print("Destination IP:", pkt[IP].dst)
+    print("Protocol:", pkt[IP].proto)
+    print("\n")
 
-pkt = sniff(filter='icmp',prn=print_pkt)
+pkt = sniff(filter='icmp', prn=print_pkt)
 ```
 
 In the above code, for each captured packet, the callback function `print_pkt()` will be invoked; this function will print out some of the packet's info.
@@ -43,12 +43,12 @@ from scapy.all import *
 
 print("SENDING SPOOFED ICMP PACKET")
 
-ip = IP(src="1.2.3.4", dst="93.184.216.34")
-icmp = ICMP()
-pkt = ip/icmp
+ip = IP(src="1.2.3.4", dst="93.184.216.34") # IP Layer
+icmp = ICMP()                               # ICMP Layer
+pkt = ip/icmp                               # Construct the complete packet
 pkt.show()
 
-send(pkt,verbose=0)
+send(pkt, verbose=0)
 ```
 
 **Spoof UDP packets**
