@@ -1,6 +1,6 @@
 from scapy.all import *
 
-print("SENDING SPOOFED ICMP PACKET")
+print("SENDING SPOOFED UDP PACKET")
 
 ip = IP(src="1.2.3.4", dst="10.0.2.69") # IP Layer
 udp = UDP(sport=8888, dport=9090)       # UDP Layer
