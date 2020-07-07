@@ -1,4 +1,4 @@
-#### How to compile the programs
+## How to compile the programs
 
 `gcc -o icmp_spoof spoof_icmp.c checksum.c spoof.c`
 
