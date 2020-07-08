@@ -34,7 +34,7 @@ Examples of filtering possible with Scapy include:
 
 ## Spoofing Packets
 
-As a packet spoofing tool, Scapy enables arbitrary values to be set in the fields of different packet headers. For example, IP spoofing can be used by a malicious party to invoke a DDoS attack against a target. IP spoofing is the creation of IP packets which have a modified source address to either conceal the identity of the sender, to impersonate another network entity (a computer system, a datacenter, etc.), or both. 
+As a packet spoofing tool, Scapy enables arbitrary values to be set in the fields of different packet headers. For example, IP spoofing can be used by a malicious party to invoke a DDoS attack against a target. IP spoofing is the creation of IP packets which have a modified source address to either conceal the identity of the sender, to impersonate another network entity (a computer system, a datacenter, etc.), or both.
 
 **Spoof ICMP packet**
 
