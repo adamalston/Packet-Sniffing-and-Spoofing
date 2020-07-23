@@ -13,59 +13,59 @@ int send_packet_raw(int sock, char *ip, int n);
 
 int main()
 {
-	// Create raw socket
-	int enable = 1;
-	int sock = socket(AF_INET, SOCK_RAW, IPPROTO_RAW);
-	setsockopt(sock, IPPROTO_IP, IP_HDRINCL, &enable, sizeof(enable));
+    // Create raw socket
+    int enable = 1;
+    int sock = socket(AF_INET, SOCK_RAW, IPPROTO_RAW);
+    setsockopt(sock, IPPROTO_IP, IP_HDRINCL, &enable, sizeof(enable));
 
-	// Read the UDP packet from file
-	FILE *f = fopen("ip.bin", "rb");
-	if (!f)
-	{
-		perror("Can't open 'ip.bin'");
-		exit(0);
-	}
+    // Read the UDP packet from file
+    FILE *f = fopen("ip.bin", "rb");
+    if (!f)
+    {
+        perror("Can't open 'ip.bin'");
+        exit(0);
+    }
 
-	unsigned char ip[MAX_FILE_SIZE];
-	int n = fread(ip, 1, MAX_FILE_SIZE, f);
-	printf("Total IP packet size: %d\n", n);
+    unsigned char ip[MAX_FILE_SIZE];
+    int n = fread(ip, 1, MAX_FILE_SIZE, f);
+    printf("Total IP packet size: %d\n", n);
 
-	// Modify and send out UDP packets
-	srand(time(0)); // Initialize the seed for random # generation
-	
-	for (int i = 1; i < 100; i++)
-	{
-		printf("%d\n", i);
-		unsigned short src_port;
-		unsigned int src_ip;
+    // Modify and send out UDP packets
+    srand(time(0)); // Initialize the seed for random # generation
 
-		src_ip = htonl(rand());
-		memcpy(ip + 12, &src_ip, 4); // modify source IP
+    for (int i = 1; i < 100; i++)
+    {
+        printf("%d\n", i);
+        unsigned short src_port;
+        unsigned int src_ip;
 
-		src_port = htons(rand());
-		memcpy(ip + 20, &src_port, 2); // modify soruce port
+        src_ip = htonl(rand());
+        memcpy(ip + 12, &src_ip, 4); // modify source IP
 
-		send_packet_raw(sock, ip, n); // send packet
-	}
+        src_port = htons(rand());
+        memcpy(ip + 20, &src_port, 2); // modify soruce port
 
-	close(sock);
+        send_packet_raw(sock, ip, n); // send packet
+    }
+
+    close(sock);
 }
 
 int send_packet_raw(int sock, char *ip, int n)
 {
-	struct sockaddr_in dest_info;
-	
-	dest_info.sin_family = AF_INET;
-	dest_info.sin_addr.s_addr = inet_addr(TARGET_IP);
+    struct sockaddr_in dest_info;
 
-	int r = sendto(sock, ip, n, 0, (struct sockaddr *)&dest_info, sizeof(dest_info));
+    dest_info.sin_family = AF_INET;
+    dest_info.sin_addr.s_addr = inet_addr(TARGET_IP);
 
-	if (r >= 0)
-	{
-		printf("Sent a packet of size: %d\n", r);
-	}
-	else
-	{
-		printf("Failed to send packet. Did you run it using sudo?\n");
-	}
+    int r = sendto(sock, ip, n, 0, (struct sockaddr *)&dest_info, sizeof(dest_info));
+
+    if (r >= 0)
+    {
+        printf("Sent a packet of size: %d\n", r);
+    }
+    else
+    {
+        printf("Failed to send packet. Did you run it using sudo?\n");
+    }
 }
