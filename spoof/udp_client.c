@@ -20,7 +20,6 @@ void main()
     dest_info.sin_port = htons(9090);
 
     // Step 3: Send out the packet.
-    sendto(sock, data, strlen(data), 0,
-           (struct sockaddr *)&dest_info, sizeof(dest_info));
+    sendto(sock, data, strlen(data), 0, (struct sockaddr *)&dest_info, sizeof(dest_info));
     close(sock);
 }
